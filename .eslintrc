@@ -1,0 +1,10 @@
+{
+    "parserOptions": {
+      "ecmaVersion": 8
+    },
+    "extends": ["vue","eslint-config-bfe"],
+    "rules": {
+        "import/no-unresolved": 0,
+        "import/no-unassigned-import": 0
+    }
+}
