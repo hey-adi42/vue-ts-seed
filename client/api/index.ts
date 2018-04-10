@@ -1,8 +1,5 @@
 import * as request from './interface';
 
-interface CityWeather {
-    city: string;
-}
-export const getCityWeather = async (param: CityWeather) => {
+export const getCityWeather = async (param: { city: string }) => {
     return request.get('/weatherApi', param);
 };

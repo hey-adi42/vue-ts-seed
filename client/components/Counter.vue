@@ -15,23 +15,23 @@ import { ActionContext, Store } from 'vuex';
 
 @Component
 export default class Counter extends Vue {
-    // @State(state => state.counter) counter: StoreState.Counter;
-    @Action('handleByNum') handleByNumAction: any;
-    private get counter (): StoreState.Counter {
-        return this.$store.state.counter;
-    }
+    @State(state => state.counter) counter: StoreState.Counter;
+    @Action('handleByNum') handleByNumAction: StoreAction.HandleByNumAction;
+    // private get counter (): StoreState.Counter {
+    //     return this.$store.state.counter;
+    // }
     handleByNum (type: string): void {
-        let v;
+        let count: number;
         if (type === 'plus') {
-            v = this.counter.count + 1;
+            count = this.counter.count + 1;
         } else {
-            v = this.counter.count - 1;
+            count = this.counter.count - 1;
         }
         const test = (s: string) => {
             console.log(s);
         };
-        this.handleByNumAction(1);
-        this.$store.dispatch('handleByNum', 'asdf');
+        this.handleByNumAction({ count });
+        // this.$store.dispatch('handleByNum', 'asdf');
     }
     mounted () {
         // console.log(this.counter);
