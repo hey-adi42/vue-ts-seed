@@ -1,4 +1,4 @@
-# vpack-ts01
+# t5
 
 To start:
 
@@ -15,12 +15,6 @@ To build for production:
 
 ```bash
 $ npm run build
-```
-
-To lint you code:
-
-```bash
-$ npm run lint
 ```
 
 

@@ -17,9 +17,7 @@ import { ActionContext, Store } from 'vuex';
 export default class Counter extends Vue {
     @State(state => state.counter) counter: StoreState.Counter;
     @Action('handleByNum') handleByNumAction: StoreAction.HandleByNumAction;
-    // private get counter (): StoreState.Counter {
-    //     return this.$store.state.counter;
-    // }
+
     handleByNum (type: string): void {
         let count: number;
         if (type === 'plus') {
@@ -27,14 +25,7 @@ export default class Counter extends Vue {
         } else {
             count = this.counter.count - 1;
         }
-        const test = (s: string) => {
-            console.log(s);
-        };
         this.handleByNumAction({ count });
-        // this.$store.dispatch('handleByNum', 'asdf');
-    }
-    mounted () {
-        // console.log(this.counter);
     }
 }
 </script>

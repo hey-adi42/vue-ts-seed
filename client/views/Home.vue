@@ -7,8 +7,8 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
+import { Action } from 'vuex-class';
 import Counter from '../components/Counter.vue';
-import * as api from './../api/';
 
 @Component({
     components: {
@@ -16,9 +16,11 @@ import * as api from './../api/';
     }
 })
 export default class Home extends Vue {
+    @Action('getTodayWeather') getTodayWeatherAction: StoreAction.GetTodayWeatherAction;
     created () {
-        api.getCityWeather({ city: encodeURIComponent('北京') }).then(res => {
-            console.log(res);
+        this.getTodayWeatherAction({ city: '北京' }).then((res: Ajax.AjaxResponse) => {
+            const { low, high, type } = res.data.forecast[0];
+            this.$message(`北京今日：${type} ${low} - ${high}`);
         });
     }
 }

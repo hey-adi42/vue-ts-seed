@@ -1,6 +1,8 @@
 'use strict';
+const pkg = require('../package');
+
 module.exports = {
-    title: 'vpack-ts01',
+    title: 't5',
     // Options for webpack-dev-server
     // See https://webpack.js.org/configuration/dev-server
     devServer: {
@@ -16,5 +18,5 @@ module.exports = {
     },
     // when you use electron please set to relative path like ./
     // otherwise only set to absolute path when you're using history mode
-    publicPath: '/'
+    publicPath: '/',
 };

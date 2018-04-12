@@ -11,5 +11,12 @@ declare namespace StoreAction {
     export interface HandleByNumAction {
         (count: HandleNumParam): void;
     }
+    
+    export interface GetTodayWeatherParam {
+        city: string
+    }
+    export interface GetTodayWeatherAction {
+        (payload: GetTodayWeatherParam): Promise<Ajax.AjaxResponse>;
+    }
 }
 

@@ -1,8 +1,7 @@
 import axios from 'axios';
 import qs from 'qs';
 import config from './config';
-
-// import { Message } from 'bfui';
+import { Message } from 'element-ui';
 
 const service = axios.create(config);
 
@@ -21,7 +20,11 @@ service.interceptors.request.use(
         return config;
     },
     error => {
-        alert('报错信息');
+        Message({
+            showClose: true,
+            type: 'warning',
+            message: '报错信息'
+        });
         return Promise.reject(error);
     }
 );
@@ -31,13 +34,23 @@ service.interceptors.response.use(
     res => {
         const data = res.data;
         if (data && data.code !== 0 && data.code !== 200) {
-            alert('数据异常信息');
+            Message({
+                showClose: true,
+                type: 'warning',
+                message: data.code > -1
+                    ? data.message
+                    : '报错信息'
+            });
             return Promise.reject(data.message);
         }
-        return data;
+        return res;
     },
     error => {
-        alert('报错信息');
+        Message({
+            showClose: true,
+            type: 'warning',
+            message: '报错信息'
+        });
         return Promise.reject(error);
     }
 );
